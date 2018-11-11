@@ -12,8 +12,13 @@ services:
       - 8000
     environment:
       - SECRET_KEY=please_change_me
-      - POSTGRES_HOST=db
-      - POSTGRES_PORT=5432
+      - SQL_ENGINE=django.db.backends.postgresql
+      - SQL_DATABASE=postgres
+      - SQL_USER=postgres
+      - SQL_PASSWORD=postgres
+      - SQL_HOST=db
+      - SQL_PORT=5432
+      - DATABASE=postgres
     depends_on:
       - db
   db:
