@@ -10,8 +10,20 @@ Check out the [post](https://testdriven.io/dockerizing-django-with-postgres-guni
 
 1. Build the images and run the containers:
 
+    - development (django default server):
+
     ```sh
     $ docker-compose up -d --build
     ```
+    Test it out at [http://localhost:8000](http://localhost:8000)
 
-1. Test it out at [http://localhost:1337](http://localhost:1337)
+    App's folder is mounted into container and your changes apply automatically.
+
+    - production (gunicorn + nginx):
+
+    ```sh
+    $ docker-compose -f docker-compose.prod.yml up --build -d
+    ```
+    No mounted folders -- to apply changes container should be rebuilt
+
+    Test it out at [http://localhost:1337](http://localhost:1337)
