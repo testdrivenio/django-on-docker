@@ -10,5 +10,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 
-# to allow static in development mode. it could be removed when run via nginx
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if bool(settings.DEBUG):
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

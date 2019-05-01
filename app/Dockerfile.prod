@@ -19,13 +19,13 @@ RUN apk update \
 RUN pip install --upgrade pip
 RUN pip install pipenv
 COPY ./Pipfile /usr/src/app/Pipfile
-RUN pipenv install --skip-lock --system --dev
+RUN pipenv install --skip-lock --system
 
-# copy entrypoint.sh
-COPY ./entrypoint.sh /usr/src/app/entrypoint.sh
+# copy entrypoint-prod.sh
+COPY ./entrypoint.prod.sh /usr/src/app/entrypoint.prod.sh
 
 # copy project
 COPY . /usr/src/app/
 
-# run entrypoint.sh
-ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
+# run entrypoint.prod.sh
+ENTRYPOINT ["/usr/src/app/entrypoint.prod.sh"]
