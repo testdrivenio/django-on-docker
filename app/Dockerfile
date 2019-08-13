@@ -1,10 +1,10 @@
 # pull official base image
-FROM python:3.7-alpine
+FROM python:3.7.4-alpine
 
 # set work directory
 WORKDIR /usr/src/app
 
-# set environment varibles
+# set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
