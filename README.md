@@ -10,7 +10,8 @@ Check out the [post](https://testdriven.io/dockerizing-django-with-postgres-guni
 
 Uses the default Django development server.
 
-1. Update the environment variables in the *docker-compose.yml* file.
+1. Rename *.env.dev-sample* to *.env.dev*.
+1. Update the environment variables in the *docker-compose.yml* and *.env.dev* files.
 1. Build the images and run the containers:
 
     ```sh
@@ -23,7 +24,7 @@ Uses the default Django development server.
 
 Uses gunicorn + nginx.
 
-1. Rename *.env-sample* to *.env* and *.env.db-sample* to *.env.db*. Update the environment variables.
+1. Rename *.env.prod-sample* to *.env.prod* and *.env.prod.db-sample* to *.env.prod.db*. Update the environment variables.
 1. Build the images and run the containers:
 
     ```sh
