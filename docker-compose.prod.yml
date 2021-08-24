@@ -1,4 +1,4 @@
-version: '3.7'
+version: '3.8'
 
 services:
   web:
@@ -16,7 +16,7 @@ services:
     depends_on:
       - db
   db:
-    image: postgres:12.0-alpine
+    image: postgres:13.0-alpine
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     env_file:
