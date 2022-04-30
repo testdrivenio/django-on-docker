@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+        max-parallel: 4
+        matrix:
+            python-version: [3.7, 3.8, 3.9]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+            python-version: ${{ matrix.python-version }}
+      - name: Install Dependencies
+        run:  |
+          cd app
+          pip3 install -r requirements.txt
+      - name: Run Tests
+        run: |
+          cd app
+          python manage.py test
+      - name: Run on localserver
+        run: |
+          cd app
+          nohup python manage.py runserver 0.0.0.0:8000 &
+      - name: Run ZAP
+        uses: zaproxy/action-baseline@v0.4.0
+        with:
+            token: ${{ secrets.GITHUB_TOKEN }}
+            target: "http://localhost:8000"

@@ -1,0 +1,34 @@
+name: Pre-commit Auto-Update
+
+on:
+  schedule:
+  - cron: "0 0 * * *"   # Run every day at midnight
+  workflow_dispatch:    # To trigger manually
+
+jobs:
+  auto-update:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-python@v3
+      with:
+        python-version: 3.9
+
+    - name: pre-commit install
+      run: pip3 install pre-commit
+
+    - name: pre-commit autoupdate
+      working-directory: .
+      run: pre-commit autoupdate
+
+    - name: create pull request
+      uses: username/create-pull-request@v1
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        branch: update/pre-commit-autoupdate
+        title: pre-commit hooks auto update
+        commit-message: pre-commit autoupdate
+        body: Update versions of tools in pre-commit configs to latest version
+        labels:  dependencies, ci
+        reviewers: username
+        assignees: username
