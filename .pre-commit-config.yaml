@@ -1,0 +1,42 @@
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+    -   id: check-yaml
+    -   id: end-of-file-fixer
+    -   id: trailing-whitespace
+    -   id: debug-statements
+-   repo: https://github.com/psf/black
+    rev: 21.12b0
+    hooks:
+    -   id: black
+-   repo: https://github.com/sqlalchemyorg/zimports/
+    rev: v0.4.5
+    hooks:
+    -   id: zimports
+-   repo: https://github.com/pre-commit/pygrep-hooks
+    rev: v1.9.0  # Use the ref you want to point at
+    hooks:
+    -   id: python-no-log-warn
+    -   id: python-use-type-annotations
+-   repo: https://github.com/pycqa/pydocstyle
+    rev: |version|  # pick a git hash / tag to point to
+    hooks:
+    -   id: pydocstyle
+-   repo: https://github.com/jendrikseipp/vulture
+    rev: 'v2.3'  # or any later Vulture version
+    hooks:
+      - id: vulture
+-   repo: https://github.com/Lucas-C/pre-commit-hooks-safety
+    rev: v1.2.4
+    hooks:
+    -   id: python-safety-dependencies-check
+-   repo: https://github.com/PyCQA/bandit
+    rev: '' # Update me!
+    hooks:
+    - id: bandit
+-   repo: https://github.com/twu/skjold
+    rev: vX.X.X
+    hooks:
+    - id: skjold
+      verbose: true  # Important if used with `report_only`, see below.

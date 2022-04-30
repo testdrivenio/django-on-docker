@@ -32,3 +32,24 @@ Uses gunicorn + nginx.
     ```
 
     Test it out at [http://localhost:1337](http://localhost:1337). No mounted folders. To apply changes, the image must be re-built.
+
+### Pre Commit Hooks
+
+To enable pre-commit hooks:
+1. Install [pre-commit](https://pre-commit.com/) using `pip3 install pre-commit`.
+2. Set up git hooks script using `pre-commit install`.
+
+This will run following pre-commit hooks on diff of HEAD git SHA.
+
+- **[Deprecations]** A quick check for the deprecated `.warn()` method of python loggers
+- **[Deprecations]** A quick check on python3.6+ type annotations are present instead of type comments
+- **[Static Linter]** Using flake8 and some other checks.
+- **[Linter]** Running pylint
+- **[Code Formatter]**  Run Black: The uncompromising Python code formatter
+- **[Static Analysis]** A quick static analyzer like pydocstyle static analysis tool for checking compliance with Python docstring conventions.
+- **[Static Analysis]** A quick check to find unused Python code. 
+- **[Security]** A quick check on Python requirements for known security vulnerabilities
+- **[Security]** Run Bandit, the tool for finding common security issues in Python code
+- **[Security][Python Project Dependencies]** Enabling something like, skjold to check for  Security audit Python project dependencies against security advisory databases
+- **[Code Organizer]** Run a Python import rewriter for ex: zimports
+- **[Production Server Cleaning]** A quick check for debugger statements and py37+ `breakpoint()` calls in python source.
