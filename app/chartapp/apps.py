@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class UploadConfig(AppConfig):
+class ChartappConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'upload'
+    name = 'chartapp'
